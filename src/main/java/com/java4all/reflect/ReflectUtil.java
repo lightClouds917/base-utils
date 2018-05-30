@@ -8,6 +8,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -24,6 +28,7 @@ import java.math.BigDecimal;
  * 循环向上转型, 获取对象的DeclaredMethod
  * 调用set方法把值set到对象当中
  * 通过class类型获取获取对应类型的值
+ * 将对象中所有属性值为空字符串的，转换为null
  */
 public class ReflectUtil {
 	/**
@@ -204,7 +209,7 @@ public class ReflectUtil {
 	}
 
 	/**
-	 * 通过class类型获取获取对应类型的值
+	 * 通过class类型获取对应类型的值
 	 * @param typeClass class类型
 	 * @param value 值
 	 * @return Object
@@ -256,6 +261,34 @@ public class ReflectUtil {
 
 	}
 
+
+	public static void main(String[] args){
+		User user = new User(13,"",23,"浙江省杭州市西湖区","浙江省","",new Date(),null);
+	    dealWithNull(user);
+	}
+
+	/**
+	 * 将对象中所有属性值为空字符串的，转换为null
+	 * 常用于接口层的对象参数初步处理
+	 * @param obj
+	 */
+	public static Object dealWithNull(Object obj){
+		try {
+			Field[] fields = obj.getClass().getDeclaredFields();
+			List<Field> stringFieldList =
+					Arrays.stream(fields).filter(field -> field.getGenericType().getTypeName().equals("java.lang.String")).collect(Collectors.toList());
+
+			for (int i = 0 , length = stringFieldList.size(); i < length; i++) {
+				stringFieldList.get(i).setAccessible(true);
+				if(StringUtils.trim(stringFieldList.get(i).get(obj).toString()).equals("")){
+					stringFieldList.get(i).set(obj,null);
+				}
+			}
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
+		return obj;
+	}
 
 }
 
