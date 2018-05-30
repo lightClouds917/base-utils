@@ -18,6 +18,8 @@
  * base64字符串转为文件
  * MultipartFile 转为File
  * 解析多文件上传
+ * 使用字节流复制文件
+ * 使用字符流复制文件
 ### JsonUtil
  * map转json
  * Object转json
@@ -37,6 +39,7 @@
   * 循环向上转型, 获取对象的DeclaredMethod
   * 调用set方法把值set到对象当中
   * 通过class类型获取获取对应类型的值
+  * 将对象中所有属性值为空字符串的，转换为null
  ### 封装类
  #### BaseInfo 常用封装类，查询结果封装
  #### ResponseWrapper 常用封装类，返回前端标准格式
