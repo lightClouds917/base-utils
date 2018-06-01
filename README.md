@@ -47,6 +47,9 @@
   * 调用set方法把值set到对象当中
   * 通过class类型获取获取对应类型的值
   * 将对象中所有属性值为空字符串的，转换为null
+ ### MyCollectionUtil
+  * 根据map的value值排序List<Map>
+  * 根据对象属性值排序List<Object>
  ### 封装类
  #### BaseInfo 常用封装类，查询结果封装
  #### ResponseWrapper 常用封装类，返回前端标准格式
