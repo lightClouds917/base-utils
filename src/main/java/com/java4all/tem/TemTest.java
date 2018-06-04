@@ -1,12 +1,11 @@
 package com.java4all.tem;
 
 import com.java4all.collection.MyCollectionUtil;
+import com.java4all.date.DateConstant;
 import com.java4all.reflect.User;
 import org.apache.commons.collections.map.HashedMap;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -70,6 +69,51 @@ public class TemTest {
         List<Object> list3 = MyCollectionUtil.listSort(list2, "asc");
         List<Object> list4 = MyCollectionUtil.listSort(list2, "desc");
         logger.info("测试结果");
+
+
+        List<String> list5 = Arrays.asList("1one", "two", "three", "4four","23fs");
+        //list5.stream().filter(s -> Character.isDigit(s.indexOf(0))).forEach();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("aaaa");
+            }
+        }).start();
+
+        logger.info("----------------");
+
+
+        new Thread(()->{
+            System.out.println("bbbbb");
+        }).start();
+        logger.info("----------------");
+
+
+        /**
+         * 字符串长度比较
+         */
+        List<String> list11 = Arrays.asList("I", "love", "you", "too","aaaa","b");
+        Collections.sort(list11, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(o1 == null || o2 == null){ return -1;}
+                return o2.length()-o1.length();
+            }
+        });
+        logger.info("==============");
+
+        List<String> list12 = Arrays.asList("I", "love", "you", "too","aabdffaa","b");
+        Collections.sort(list12,(s1,s2)->{
+            if(s1 == null || s2 == null){
+                return -1;
+            }
+            return s1.length()-s2.length();
+        });
+
+        logger.info("==="+ DateConstant.LAST_yyyy_01);
+        logger.info("==="+ DateConstant.LAST_yyyy_12_31);
+        logger.info("==============");
 
     }
 }

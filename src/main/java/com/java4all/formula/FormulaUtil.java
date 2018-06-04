@@ -7,6 +7,8 @@ import java.math.BigDecimal;
  * Date: 2018/3/27
  * Description:常用的计算公式/方法
  * 计算同比 （a-b）/b
+ * a / b   计算百分比
+ * a / b
  */
 public class FormulaUtil {
 
@@ -51,5 +53,32 @@ public class FormulaUtil {
         }catch (Exception ex){
             throw new RuntimeException("====>计算同比出错",ex);
         }
+    }
+    /**
+     * a / b   计算百分比
+     * @param a
+     * @param b
+     * @return eg:65.32%
+     */
+    public static String ADivideBPercent(BigDecimal a,BigDecimal b){
+        String percent =
+                b == null ? "-" :
+                        a == null ? "0.00%" :
+                                a.multiply(new BigDecimal(100)).divide(b).setScale(2,BigDecimal.ROUND_HALF_UP) + "%";
+        return percent;
+    }
+
+    /**
+     * a / b
+     * @param a
+     * @param b
+     * @return eg:65.32
+     */
+    public static String ADivideB(BigDecimal a,BigDecimal b){
+        String result =
+                b == null ? "-" :
+                        a == null ? "0.00" :
+                                a.divide(b).setScale(2,BigDecimal.ROUND_HALF_UP) + "";
+        return result;
     }
 }

@@ -56,7 +56,12 @@
 * redis存取Set结构类型数据 ISetCache
 * redis存取List结构类型数据 IListCache
 * redis存取Hash结构类型数据 IHashCache
-
+### DateConstant
+ * 常用的日期常量
+### FormulaUtil
+ * 计算同比 （a-b）/b
+ * a / b   计算百分比
+ * a / b
  ### 封装类
  #### BaseInfo 常用封装类，查询结果封装
  #### ResponseWrapper 常用封装类，返回前端标准格式
