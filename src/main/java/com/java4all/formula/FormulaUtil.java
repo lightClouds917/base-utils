@@ -64,7 +64,7 @@ public class FormulaUtil {
         String percent =
                 b == null ? "-" :
                         a == null ? "0.00%" :
-                                a.multiply(new BigDecimal(100)).divide(b).setScale(2,BigDecimal.ROUND_HALF_UP) + "%";
+                                a.multiply(new BigDecimal(100)).divide(b,4).setScale(2,BigDecimal.ROUND_HALF_UP) + "%";
         return percent;
     }
 
@@ -78,7 +78,7 @@ public class FormulaUtil {
         String result =
                 b == null ? "-" :
                         a == null ? "0.00" :
-                                a.divide(b).setScale(2,BigDecimal.ROUND_HALF_UP) + "";
+                                a.divide(b,4).setScale(2,BigDecimal.ROUND_HALF_UP) + "";
         return result;
     }
 }
