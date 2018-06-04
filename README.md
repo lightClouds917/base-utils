@@ -36,33 +36,33 @@
  * json转List<Map<String, Object>>
  * List<Map<String,Object>>转json
  * 将json字符串转为Map结构（复杂json，嵌套结构都可以）
- ### ReflectUtil
-  * 利用反射获取指定对象的指定属性
-  * 利用反射获取指定对象里面的指定属性
-  * 利用反射设置指定对象的指定属性为指定的值
-  * 两者属性名一致时，拷贝source里的属性到dest里
-  * 调用Getter方法
-  * 直接调用对象方法, 无视private/protected修饰符
-  * 循环向上转型, 获取对象的DeclaredMethod
-  * 调用set方法把值set到对象当中
-  * 通过class类型获取获取对应类型的值
-  * 将对象中所有属性值为空字符串的，转换为null
- ### MyCollectionUtil
-  * 根据map的value值排序List<Map>
-  * 根据对象属性值排序List<Object>
+### ReflectUtil
+ * 利用反射获取指定对象的指定属性
+ * 利用反射获取指定对象里面的指定属性
+ * 利用反射设置指定对象的指定属性为指定的值
+ * 两者属性名一致时，拷贝source里的属性到dest里
+ * 调用Getter方法
+ * 直接调用对象方法, 无视private/protected修饰符
+ * 循环向上转型, 获取对象的DeclaredMethod
+ * 调用set方法把值set到对象当中
+ * 通过class类型获取获取对应类型的值
+ * 将对象中所有属性值为空字符串的，转换为null
+### MyCollectionUtil
+ * 根据map的value值排序List<Map>
+ * 根据对象属性值排序List<Object>
 ### redis
-* 整合redis
-* redis存取String类型数据 IStringCache
-* redis存取Set结构类型数据 ISetCache
-* redis存取List结构类型数据 IListCache
-* redis存取Hash结构类型数据 IHashCache
+ * 整合redis
+ * redis存取String类型数据 IStringCache
+ * redis存取Set结构类型数据 ISetCache
+ * redis存取List结构类型数据 IListCache
+ * redis存取Hash结构类型数据 IHashCache
 ### DateConstant
  * 常用的日期常量
 ### FormulaUtil
  * 计算同比 （a-b）/b
  * a / b   计算百分比
  * a / b
- ### 封装类
- #### BaseInfo 常用封装类，查询结果封装
- #### ResponseWrapper 常用封装类，返回前端标准格式
- #### ReturnCode 常用封装类，枚举返回码
+### 封装类
+#### BaseInfo 常用封装类，查询结果封装
+#### ResponseWrapper 常用封装类，返回前端标准格式
+#### ReturnCode 常用封装类，枚举返回码
