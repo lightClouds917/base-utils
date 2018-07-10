@@ -63,8 +63,9 @@ public class FormulaUtil {
     public static String ADivideBPercent(BigDecimal a,BigDecimal b){
         String percent =
                 b == null ? "-" :
-                        a == null ? "0.00%" :
-                                a.multiply(new BigDecimal(100)).divide(b,4).setScale(2,BigDecimal.ROUND_HALF_UP) + "%";
+                        b.compareTo(BigDecimal.ZERO) == 0 ? "-" :
+                                a == null ? "0.00%" :
+                                        a.multiply(new BigDecimal(100)).divide(b,4).setScale(2,BigDecimal.ROUND_HALF_UP) + "%";
         return percent;
     }
 
@@ -77,8 +78,13 @@ public class FormulaUtil {
     public static String ADivideB(BigDecimal a,BigDecimal b){
         String result =
                 b == null ? "-" :
-                        a == null ? "0.00" :
-                                a.divide(b,4).setScale(2,BigDecimal.ROUND_HALF_UP) + "";
+                        b.compareTo(BigDecimal.ZERO) == 0 ? "-":
+                                a == null ? "0.00" :
+                                        a.divide(b,4).setScale(2,BigDecimal.ROUND_HALF_UP) + "";
         return result;
+    }
+
+    public static void main(String[] args){
+        System.out.println(ADivideB(new BigDecimal(2),new BigDecimal(2)));
     }
 }

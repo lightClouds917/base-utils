@@ -2,6 +2,7 @@ package com.java4all.date;
 
 import org.apache.commons.lang.time.DateUtils;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -17,6 +18,7 @@ import java.util.*;
  * 日期转字符串 如：2017-7-1
  * 获取当前年
  * 获取当前月
+ * 时间差转为 02天14小时24分钟33秒 格式
  */
 public class DateUtil {
     /**
@@ -160,6 +162,42 @@ public class DateUtil {
             return null;
         }
         return map;
+    }
+
+
+
+    /**
+     * 时间差转为 2天3小时24分34秒 格式
+     * 注意：本方法适合时间差在31天之内
+     * @param timeDiff
+     * @return
+     */
+    public static String timeDiffTransform(long timeDiff){
+        //时间差 毫秒  测试使用
+        //Duration between = Duration.between(LocalDateTime.now(), LocalDateTime.now().minusDays(0).minusHours(-7).minusMinutes(-15).minusSeconds(-35));
+        //timeDiff = between.toMillis() ;
+
+        if(timeDiff == 0L){
+            return "0天0小时0分0秒";
+        }
+        try {
+            String originTime = "1970-01-01 00:00:00";
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date origin = dateFormat.parse(originTime);
+            long originMills = origin.getTime();
+            //第一天是从1月1号开始，不是0号开始  时间差大于31天和小于1天都需要特殊处理
+            Date date = new Date(originMills+timeDiff);
+            String result = dateFormat.format(date);
+            Integer day = Integer.valueOf(result.substring(8,10));
+            day = day >= 1 ? day - 1 : day;
+            String result2 = day+"天"+result.substring(11,13)+"小时"+result.substring(14,16)+"分"+result.substring(17,19)+"秒";
+            System.out.println(result);
+            System.out.println(result2);
+            return result2;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return "转化出错";
+        }
     }
 
 }
