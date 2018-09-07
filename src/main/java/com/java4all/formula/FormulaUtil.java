@@ -30,7 +30,7 @@ public class FormulaUtil {
                 sumYoYStr = "-";
             } else {
                 //计算同比   （今年值-去年同期值）/去年同期值
-                BigDecimal big = ((nowSum.subtract(lastSum)).divide(lastSum,4));
+                BigDecimal big = ((nowSum.subtract(lastSum)).divide(lastSum,4,BigDecimal.ROUND_HALF_UP));
 
                 //  处理如0.00003之类的特殊情况
                 BigDecimal zh = new BigDecimal(0.0001);
